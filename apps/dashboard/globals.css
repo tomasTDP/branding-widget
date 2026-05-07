@@ -1,0 +1,351 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Default theme (dark) — Zen Inspired */
+:root {
+  --background: oklch(0.14 0.005 90);
+  --foreground: oklch(0.90 0.01 90);
+  --card: oklch(0.18 0.005 90);
+  --card-foreground: oklch(0.90 0.01 90);
+  --popover: oklch(0.18 0.005 90);
+  --popover-foreground: oklch(0.90 0.01 90);
+  --primary: oklch(0.85 0.02 85);
+  --primary-foreground: oklch(0.14 0.005 90);
+  --secondary: oklch(0.22 0.005 90);
+  --secondary-foreground: oklch(0.85 0.01 90);
+  --muted: oklch(0.22 0.005 90);
+  --muted-foreground: oklch(0.55 0.01 90);
+  --accent: oklch(0.22 0.008 85);
+  --accent-foreground: oklch(0.85 0.01 90);
+  --destructive: oklch(0.60 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.26 0.005 90);
+  --input: oklch(0.26 0.005 90);
+  --ring: oklch(0.85 0.02 85);
+
+  --sidebar: oklch(0.16 0.005 90);
+  --sidebar-foreground: oklch(0.90 0.01 90);
+  --sidebar-primary: oklch(0.85 0.02 85);
+  --sidebar-primary-foreground: oklch(0.14 0.005 90);
+  --sidebar-accent: oklch(0.22 0.008 85);
+  --sidebar-accent-foreground: oklch(0.85 0.01 90);
+  --sidebar-border: oklch(0.26 0.005 90);
+  --sidebar-ring: oklch(0.85 0.02 85);
+
+  --status-open: oklch(0.60 0.01 90);
+  --status-open-bg: oklch(0.24 0.005 90);
+  --status-accepted: oklch(0.65 0.17 155);
+  --status-accepted-bg: oklch(0.22 0.03 155);
+  --status-rejected: oklch(0.65 0.2 25);
+  --status-rejected-bg: oklch(0.22 0.03 25);
+  --status-done: oklch(0.65 0.15 300);
+  --status-done-bg: oklch(0.22 0.03 300);
+  --status-claimed: oklch(0.65 0.15 70);
+  --status-claimed-bg: oklch(0.22 0.03 70);
+  --status-in-progress: oklch(0.65 0.15 250);
+  --status-in-progress-bg: oklch(0.22 0.03 250);
+  --status-blocked: oklch(0.65 0.2 25);
+  --status-blocked-bg: oklch(0.22 0.03 25);
+  --agent-active: oklch(0.65 0.17 155);
+
+  --scrollbar-thumb: oklch(0.30 0.005 90);
+  --scrollbar-thumb-hover: oklch(0.40 0.005 90);
+}
+
+/* Light mode overrides — applied when .light class is on document root */
+.light {
+  --background: oklch(0.99 0.005 90);
+  --foreground: oklch(0.18 0.01 90);
+  --card: oklch(1.0 0 0);
+  --card-foreground: oklch(0.18 0.01 90);
+  --popover: oklch(1.0 0 0);
+  --popover-foreground: oklch(0.18 0.01 90);
+  --primary: oklch(0.20 0.01 90);
+  --primary-foreground: oklch(0.98 0.005 90);
+  --secondary: oklch(0.94 0.005 90);
+  --secondary-foreground: oklch(0.20 0.01 90);
+  --muted: oklch(0.94 0.005 90);
+  --muted-foreground: oklch(0.50 0.01 90);
+  --accent: oklch(0.93 0.008 85);
+  --accent-foreground: oklch(0.20 0.01 90);
+  --destructive: oklch(0.55 0.20 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.90 0.005 90);
+  --input: oklch(0.90 0.005 90);
+  --ring: oklch(0.30 0.01 90);
+
+  --sidebar: oklch(0.96 0.005 90);
+  --sidebar-foreground: oklch(0.18 0.01 90);
+  --sidebar-primary: oklch(0.20 0.01 90);
+  --sidebar-primary-foreground: oklch(0.98 0.005 90);
+  --sidebar-accent: oklch(0.93 0.008 85);
+  --sidebar-accent-foreground: oklch(0.20 0.01 90);
+  --sidebar-border: oklch(0.88 0.005 90);
+  --sidebar-ring: oklch(0.30 0.01 90);
+
+  --status-open: oklch(0.45 0.01 90);
+  --status-open-bg: oklch(0.94 0.005 90);
+  --status-accepted: oklch(0.50 0.17 155);
+  --status-accepted-bg: oklch(0.94 0.05 155);
+  --status-rejected: oklch(0.55 0.20 25);
+  --status-rejected-bg: oklch(0.94 0.05 25);
+  --status-done: oklch(0.50 0.15 300);
+  --status-done-bg: oklch(0.94 0.04 300);
+  --status-claimed: oklch(0.55 0.15 70);
+  --status-claimed-bg: oklch(0.95 0.04 70);
+  --status-in-progress: oklch(0.50 0.15 250);
+  --status-in-progress-bg: oklch(0.94 0.04 250);
+  --status-blocked: oklch(0.55 0.20 25);
+  --status-blocked-bg: oklch(0.94 0.04 25);
+  --agent-active: oklch(0.50 0.17 155);
+
+  --scrollbar-thumb: oklch(0.85 0.005 90);
+  --scrollbar-thumb-hover: oklch(0.75 0.005 90);
+}
+
+@theme inline {
+  --radius: 0.5rem;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-status-open: var(--status-open);
+  --color-status-open-bg: var(--status-open-bg);
+  --color-status-accepted: var(--status-accepted);
+  --color-status-accepted-bg: var(--status-accepted-bg);
+  --color-status-rejected: var(--status-rejected);
+  --color-status-rejected-bg: var(--status-rejected-bg);
+  --color-status-done: var(--status-done);
+  --color-status-done-bg: var(--status-done-bg);
+  --color-status-claimed: var(--status-claimed);
+  --color-status-claimed-bg: var(--status-claimed-bg);
+  --color-status-in-progress: var(--status-in-progress);
+  --color-status-in-progress-bg: var(--status-in-progress-bg);
+  --color-status-blocked: var(--status-blocked);
+  --color-status-blocked-bg: var(--status-blocked-bg);
+  --color-agent-active: var(--agent-active);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 var(--color-agent-active); }
+  70% { box-shadow: 0 0 0 6px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes status-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease both;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.35s ease both;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in-right 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.25s ease both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease both;
+}
+
+.animate-status-pop {
+  animation: status-pop 0.3s ease;
+}
+
+/* Staggered card animations */
+.animate-stagger > * {
+  animation: fade-in 0.25s ease both;
+}
+.animate-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.animate-stagger > *:nth-child(2) { animation-delay: 40ms; }
+.animate-stagger > *:nth-child(3) { animation-delay: 80ms; }
+.animate-stagger > *:nth-child(4) { animation-delay: 120ms; }
+.animate-stagger > *:nth-child(5) { animation-delay: 160ms; }
+.animate-stagger > *:nth-child(6) { animation-delay: 200ms; }
+.animate-stagger > *:nth-child(7) { animation-delay: 240ms; }
+.animate-stagger > *:nth-child(8) { animation-delay: 280ms; }
+.animate-stagger > *:nth-child(9) { animation-delay: 320ms; }
+.animate-stagger > *:nth-child(10) { animation-delay: 360ms; }
+
+/* Activity feed stagger */
+.animate-activity > * {
+  animation: slide-in-left 0.2s ease both;
+}
+.animate-activity > *:nth-child(1) { animation-delay: 0ms; }
+.animate-activity > *:nth-child(2) { animation-delay: 60ms; }
+.animate-activity > *:nth-child(3) { animation-delay: 120ms; }
+.animate-activity > *:nth-child(4) { animation-delay: 180ms; }
+.animate-activity > *:nth-child(5) { animation-delay: 240ms; }
+
+/* Card hover lift */
+.card-hover {
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card-hover:hover {
+  transform: translateX(2px);
+}
+
+/* Detail panel transition */
+.detail-enter {
+  animation: fade-in-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Command palette */
+@keyframes cmd-backdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cmd-modal {
+  from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.cmd-backdrop-enter {
+  animation: cmd-backdrop 0.15s ease both;
+}
+
+.cmd-modal-enter {
+  animation: cmd-modal 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Pin marker */
+.pin-dot-shadow {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+.pin-marker {
+  animation: pin-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes pin-pop {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pin-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.pin-float {
+  animation: pin-float 2.5s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+/* Button press */
+.btn-press:active:not(:disabled) {
+  transform: scale(0.96);
+  transition: transform 0.08s ease;
+}
